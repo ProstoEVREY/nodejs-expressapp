@@ -5,7 +5,7 @@ class PostController{
     async create(req, res){
         try {
         const {author, title, content, picture} = req.body
-        const createdPost = await PostService.create({author, title, content, picture})
+        const createdPost = await PostService.create(req.body, req.files.picture)
         res.status(200).json(createdPost)
     }
     catch (e){
